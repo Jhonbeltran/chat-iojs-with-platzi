@@ -1,0 +1,19 @@
+{
+  "name": "chatiojs",
+  "version": "1.0.0",
+  "description": "A realtime chat with video and gifs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jhonbeltran/chat-iojs-with-platzi.git"
+  },
+  "author": "Jbeltran <jbeltranleon@gmail.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Jhonbeltran/chat-iojs-with-platzi/issues"
+  },
+  "homepage": "https://github.com/Jhonbeltran/chat-iojs-with-platzi"
+}
