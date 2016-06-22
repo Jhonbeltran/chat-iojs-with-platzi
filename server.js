@@ -65,8 +65,15 @@ y escuchar esos eventos*/
 
 /*el server ademas de recibir un callback tambien es un evenemiter */
 
+//Esto lo escribimos para hacer uso del file system para poder hacer que el server responda
+//Con archivos como un html
+const fs = require('fs')
+
 function onRequest(req, res) {
-	res.end('Hola io.js que ahora es igual a node.js')
+	//res.end('Hola io.js que ahora es igual a node.js')
+	//Esto de abajo usa un metodo sincrono(esto no es recomendado)
+	let file = fs.readFileSync('public/index.html')
+	res.end(file)
 }
 function onListening() {
 	console.log('El servidor está escuchando en el puerto: ' + port)
