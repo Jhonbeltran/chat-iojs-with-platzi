@@ -32,11 +32,27 @@ un evento al evento que esta pidiendo que se llame esa tarea)*/
  aplicaciones en tiempo real*/
 
 //vamos a crear un callback que se va a ejecutar cada vez que se hace una peticion http
-const server = http.createServer(/*Hey miren, una anemona anonima*/function (req, res) {
+// const server = http.createServer(/*Hey miren, una anemona anonima*/function (req, res) {
+// 	res.end('Hola io.js que ahora es igual a node.js')
+// })
+
+
+// server.listen(port, /*se ejecuta cuando el server termina de escuchar>*/function () {
+// 	console.log('El servidor está escuchando en el puerto: ' + port)
+// })
+
+/*Ahora resulta que eso de arriba no es tan buena practica, si queremos tener codi
+go mantenible, la recomendacion es que nosotros tengamos todas nuestras funciones callback 
+o funciones asincronas como funciones definidas o declaradas dentro del servidor*/
+
+function onRequest(req, res) {
 	res.end('Hola io.js que ahora es igual a node.js')
-})
+}
 
+const server = http.createServer(onRequest)
 
-server.listen(port, /*se ejecuta cuando el server termina de escuchar>*/function () {
+function onListening() {
 	console.log('El servidor está escuchando en el puerto: ' + port)
-})
+}
+
+server.listen(port, onListening)
