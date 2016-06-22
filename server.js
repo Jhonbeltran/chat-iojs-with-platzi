@@ -139,7 +139,9 @@ function onRequest(req, res) {
 }
 
 function onListening() {
-	console.log('El servidor está escuchando en el puerto: ' + port)
+	// console.log('El servidor está escuchando en el puerto: ' + port)
+	//Para hacer que se comporte como un template vamos a usar en vez de ' usamos backtick `
+	console.log(`El servidor está escuchando en el puerto: ${port}`)
 }
 
 const server = http.createServer()
