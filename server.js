@@ -97,15 +97,47 @@ function onRequest(req, res) {
 
 	let fileName = path.join(__dirname, 'public', 'index.html')
 
-	fs.readFile(fileName, function(err, file){
+	/*Streams: Mecanismos para poder leer archivos o fuentes de informacion binaria,
+	de forma inteligente, es decir una lectura mucho mas rapida, vamos a usar un stream de lectura
+	y enviarlo a un stream de escritura*/
+
+	//Creamos un rs = readstream a partir de fileSystem fs
+	let rs = fs.createReadStream(index)
+
+	//Seteamos el header
+	res.setHeader('Content-Type', 'text/html')
+
+	//Un stream tambien es un EventEmiter
+
+	//req y res tambien son streams .___. 
+	//De esta manera (la liena de abajo) y ya estoy leyendo el archivo y lo estoy enviando
+	rs.pipe(res)
+
+
+	//Y ya no necesitamos nada de esto
+	//(no lo borro porque no quiero :v)
+	
+	/*fs.readFile(fileName, function(err, file){
 		if (err){
 			//Asi manejamos el error 
 			return res.end(err.message)
 		}
 		res.setHeader('Content-Type', 'text/html')
 		res.end(file)
-	})	
+	})*/	
+
+	//Si hay errores los podemos controlar de la siguente forma
+
+	rs.on('error', function (err) {
+		//No necesitamos el return ._.
+		res.end(err.message)
+	})
+
+
+	/* Los streams nos permiten manipular canales de informacion haciendo buffering inteligente
+	sin necesidad de tener que cargar todo el bloque en memoria*/
 }
+
 function onListening() {
 	console.log('El servidor está escuchando en el puerto: ' + port)
 }
