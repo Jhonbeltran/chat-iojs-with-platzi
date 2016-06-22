@@ -69,9 +69,19 @@ y escuchar esos eventos*/
 //Con archivos como un html
 const fs = require('fs')
 
+//Para que nuestro codigo funcione sin problemas en otros sistemas operativos
+//En windows por ejemplo las direcciones son manejadas con \ y no con / 
+//Punto para unix :v
+//Vamos a usar el siguiente path
+
+const path = require('path')
+
+
 function onRequest(req, res) {
 	//res.end('Hola io.js que ahora es igual a node.js')
+
 	//Esto de abajo usa un metodo sincrono(esto no es recomendado)
+	
 	//let es usado en vez de var en js6 para definir variables con un scope seguro
 	//Para que la variable solo exista dentro de su hambito y no pueda ser usada fuera de el.
 	//let para variables, const para constantes
@@ -84,7 +94,10 @@ function onRequest(req, res) {
 
 
 	//Vamos a usar un callback muy comun en node "El error como primer argumento"
-	fs.readFile('public/index.html', function(err, file){
+
+	let fileName = path.join(__dirname, 'public', 'index.html')
+
+	fs.readFile(fileName, function(err, file){
 		if (err){
 			//Asi manejamos el error 
 			return res.end(err.message)
