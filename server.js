@@ -102,7 +102,7 @@ function onRequest(req, res) {
 			//Asi manejamos el error 
 			return res.end(err.message)
 		}
-		res.setHandler('Content-Type', 'text/html')
+		res.setHeader('Content-Type', 'text/html')
 		res.end(file)
 	})	
 }
