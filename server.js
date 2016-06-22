@@ -81,7 +81,7 @@ function onRequest(req, res) {
 	//res.end('Hola io.js que ahora es igual a node.js')
 
 	//Esto de abajo usa un metodo sincrono(esto no es recomendado)
-	
+
 	//let es usado en vez de var en js6 para definir variables con un scope seguro
 	//Para que la variable solo exista dentro de su hambito y no pueda ser usada fuera de el.
 	//let para variables, const para constantes
@@ -102,6 +102,7 @@ function onRequest(req, res) {
 			//Asi manejamos el error 
 			return res.end(err.message)
 		}
+		res.setHandler('Content-Type', 'text/html')
 		res.end(file)
 	})	
 }
@@ -117,4 +118,4 @@ server.on('request', onRequest)
 server.on('listening', onListening)
 
 
-
+//Y ahora en vez de usar callbacks vamos a usar streams para leer el archivo ._. 
