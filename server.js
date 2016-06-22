@@ -72,8 +72,25 @@ const fs = require('fs')
 function onRequest(req, res) {
 	//res.end('Hola io.js que ahora es igual a node.js')
 	//Esto de abajo usa un metodo sincrono(esto no es recomendado)
-	let file = fs.readFileSync('public/index.html')
-	res.end(file)
+	//let es usado en vez de var en js6 para definir variables con un scope seguro
+	//Para que la variable solo exista dentro de su hambito y no pueda ser usada fuera de el.
+	//let para variables, const para constantes
+
+	// let file = fs.readFileSync('public/index.html')
+	
+	//Ahora lo correcto es trabajar con funcionalidades asincronas :)
+	//El ultimo elemento de una funcion asincrona es un callback
+	//En este caso la funcion dentro del readFile va a recibir el archivo despues de que lo cargue
+
+
+	//Vamos a usar un callback muy comun en node "El error como primer argumento"
+	fs.readFile('public/index.html', function(err, file){
+		if (err){
+			//Asi manejamos el error 
+			return res.end(err.message)
+		}
+		res.end(file)
+	})	
 }
 function onListening() {
 	console.log('El servidor está escuchando en el puerto: ' + port)
@@ -82,7 +99,7 @@ function onListening() {
 const server = http.createServer()
 server.listen(port)
 
-//Acá estan los evenemiters request, listening...
+//Acá estan los evenemiters: request, listening...
 server.on('request', onRequest)
 server.on('listening', onListening)
 
