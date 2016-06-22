@@ -45,7 +45,7 @@ un evento al evento que esta pidiendo que se llame esa tarea)*/
 go mantenible, la recomendacion es que nosotros tengamos todas nuestras funciones callback 
 o funciones asincronas como funciones definidas o declaradas dentro del servidor*/
 
-function onRequest(req, res) {
+/*function onRequest(req, res) {
 	res.end('Hola io.js que ahora es igual a node.js')
 }
 
@@ -55,4 +55,29 @@ function onListening() {
 	console.log('El servidor está escuchando en el puerto: ' + port)
 }
 
-server.listen(port, onListening)
+server.listen(port, onListening)*/
+
+
+//Ahora vamos a usar eventemiters
+
+/* Un eventemiter es un mecanismo de io.js o de node que me permite emitir eventos
+y escuchar esos eventos*/
+
+/*el server ademas de recibir un callback tambien es un evenemiter */
+
+function onRequest(req, res) {
+	res.end('Hola io.js que ahora es igual a node.js')
+}
+function onListening() {
+	console.log('El servidor está escuchando en el puerto: ' + port)
+}
+
+const server = http.createServer()
+server.listen(port)
+
+//Acá estan los evenemiters request, listening...
+server.on('request', onRequest)
+server.on('listening', onListening)
+
+
+
