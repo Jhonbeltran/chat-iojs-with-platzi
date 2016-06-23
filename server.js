@@ -15,7 +15,7 @@ function onRequest(req, res) {
 	
 	let fileName = path.join(__dirname, 'public', 'index.html')
 
-	let rs = fs.createReadStream(index)
+	let rs = fs.createReadStream(fileName)
 
 	res.setHeader('Content-Type', 'text/html')
 
