@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Jhonbeltran/chat-iojs-with-platzi/issues"
   },
-  "homepage": "https://github.com/Jhonbeltran/chat-iojs-with-platzi"
+  "homepage": "https://github.com/Jhonbeltran/chat-iojs-with-platzi",
+  "dependencies": {
+    "st": "^1.1.0"
+  }
 }
