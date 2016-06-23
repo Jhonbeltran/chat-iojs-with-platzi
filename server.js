@@ -26,7 +26,7 @@ function onRequest(req, res) {
 
 	else{
 		res.statusCode = 404
-		res.end("4040 not found"+direccion)
+		res.end('4040 not found'+direccion)
 	}
 
 	
