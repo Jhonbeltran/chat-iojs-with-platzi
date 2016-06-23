@@ -102,7 +102,7 @@ function onRequest(req, res) {
 	y enviarlo a un stream de escritura*/
 
 	//Creamos un rs = readstream a partir de fileSystem fs
-	let rs = fs.createReadStream(index)
+	let rs = fs.createReadStream(fileName)
 
 	//Seteamos el header
 	res.setHeader('Content-Type', 'text/html')
