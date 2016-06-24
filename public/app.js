@@ -30,6 +30,23 @@ function calcular () {
 							"<li>"+cosx[2]+"</li>"+"</ul>"
 	}
 
+	if (entrada=="tanx" || entrada=="tan") {
+		salida.innerHTML = "<ul><li>"+tanx[0]+"</li>"+
+							"<li>"+tanx[2]+"</li>"+"</ul>"
+	}
+
+	if (entrada=="cotx" || entrada=="cot") {
+		salida.innerHTML = "<ul><li>"+cotx[0]+"</li>"+
+							"<li>"+cotx[2]+"</li>"+"</ul>"
+	}
+
+	if (entrada=="secx" || entrada=="sec") {
+		salida.innerHTML = "<ul><li>"+secx[0]+"</li></ul>"
+	}
+
+	if (entrada=="cscx" || entrada=="csc") {
+		salida.innerHTML = "<ul><li>"+cscx[0]+"</li></ul>"
+	}
 	
 
 
